@@ -1,0 +1,19 @@
+{
+  "name": "wiki_back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "DEBUG=app:* nodemon index",
+    "start": "NODE_ENV=production node index"},
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/boom": "^9.1.0",
+    "@hapi/joi": "^17.1.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.5.7",
+    "nodemon": "^2.0.3"
+  }
+}
