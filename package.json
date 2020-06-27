@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "DEBUG=app:* nodemon index",
-    "start": "NODE_ENV=production node index"},
+    "start": "NODE_ENV=production node index"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -14,6 +15,10 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongodb": "^3.5.7",
-    "nodemon": "^2.0.3"
+    "nodemon": "^2.0.3",
+    "pg": "^8.2.1",
+    "pg-hstore": "^2.3.3",
+    "save": "^2.4.0",
+    "sequelize": "^6.2.0"
   }
 }
