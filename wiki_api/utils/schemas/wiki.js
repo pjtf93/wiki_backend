@@ -13,7 +13,7 @@ const wikiUserSchema = joi.string().min(6).max(12);
 const createWikiSchema = {
   title: wikiTitleSchema.required(),
   content: wikiContentSchema.required(),
-  createdAt: new Date().required(),
+  // createdAt: new Date().required(),
   category: wikiCategorySchema.required(),
   comments: wikiCommentsSchema,
   tags: wikiTagSchema,
