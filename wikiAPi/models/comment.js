@@ -13,11 +13,3 @@ module.exports = (sequelize, DataTypes) => {
 
   return Comment;
 };
-/* const Sequelize = require('sequelize');
-
-const Comment = sequelize.define('comment', {
-  content: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-}); */
