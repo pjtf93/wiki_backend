@@ -1,4 +1,5 @@
 const express = require('express');
+const secure = require('../auth/secure');
 const {
   getUsers,
   getUser,
@@ -54,13 +55,14 @@ const userApi = (app) => {
     }
   });
 
-  router.put('/:userId', async (req, res, next) => {
+  router.put('/:userId', secure('update'), async (req, res, next) => {
     const { userId: id } = req.params;
     const data = {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
     };
+
     try {
       const user = await updateUser(id, data);
       res.status(200).json({
@@ -72,7 +74,7 @@ const userApi = (app) => {
     }
   });
 
-  router.delete('/:userId', async (req, res, next) => {
+  router.delete('/:userId', secure('delete'), async (req, res, next) => {
     const { userId: id } = req.params;
 
     try {

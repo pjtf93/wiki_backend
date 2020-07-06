@@ -1,18 +1,25 @@
 const express = require('express');
 
-const response = require('../../../network/response');
-const Controller = require('./index');
+// const response = require('../../../network/response');
+// const Controller = require('./index');
 
-const router = express.Router();
+const { login } = require('../services/login');
 
-router.post('/login', (req, res) => {
-  Controller.login(req.body.username, req.body.password)
-    .then((token) => {
-      response.sucess(req, res, token, 200);
-    })
-    .catch((e) => {
-      response.error(req, res, 'informacion invalida', 400);
-    });
-});
+const loginApi = (app) => {
+  const router = express.Router();
+  app.use('/api/login', router);
 
-module.exports = router;
+  router.post('/', async (req, res, next) => {
+    try {
+      const token = await login(req.body.email, req.body.password);
+      res.status(201).json({
+        token,
+        message: 'acceso exitoso',
+      });
+    } catch (err) {
+      next(err);
+    }
+  });
+};
+
+module.exports = loginApi;

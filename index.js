@@ -4,6 +4,7 @@ const userApi = require('./wikiAPi/routes/users');
 const postApi = require('./wikiAPi/routes/posts');
 const categoryApi = require('./wikiAPi/routes/category');
 const commentApi = require('./wikiAPi/routes/comments');
+const loginApi = require('./wikiAPi/routes/login');
 
 const express = require('express');
 const cors = require('cors');
@@ -16,6 +17,7 @@ app.use(cors());
 app.use(express.json());
 
 // routes
+loginApi(app);
 userApi(app);
 postApi(app);
 categoryApi(app);

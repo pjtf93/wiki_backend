@@ -1,21 +1,34 @@
 const jwt = require('jsonwebtoken');
-const config = require('../config');
-const secret = config.jwt.secret;
+const { config } = require('../config');
+
+const secreto = config.secret;
 
 const sign = (data) => {
-  return jwt.sign(data, secret);
+  return jwt.sign(data, secreto);
 };
 
 const verify = (token) => {
-  return jwt.verify(token, secret);
+  return jwt.verify(token, secreto);
 };
 
 const check = {
   own: (req, owner) => {
     const decoded = decodeHeader(req);
     console.log(decoded);
+    console.log(decoded.id);
+
+    console.log(owner);
+
     // Comprobar si es o no propio
     if (decoded.id !== owner) {
+      throw new Error('No puedes hacer esto');
+    }
+  },
+
+  logged: (req, owner) => {
+    const decoded = decodeHeader(req);
+
+    if (!decoded.id) {
       throw new Error('No puedes hacer esto');
     }
   },
@@ -35,8 +48,10 @@ const getToken = (auth) => {
 
 const decodeHeader = (req) => {
   const authorization = req.headers.authorization || '';
+  console.log(authorization);
+
   const token = getToken(authorization);
-  const decoded = jwt.verify(token);
+  const decoded = verify(token);
 
   req.user = decoded;
 

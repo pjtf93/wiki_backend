@@ -1,4 +1,6 @@
 const express = require('express');
+const secure = require('../auth/secure');
+
 const {
   getPosts,
   getPost,
@@ -36,7 +38,7 @@ const postApi = (app) => {
     }
   });
 
-  router.post('/', async (req, res, next) => {
+  router.post('/', secure('create'), async (req, res, next) => {
     const data = {
       title: req.body.title,
       content: req.body.content,
@@ -54,7 +56,7 @@ const postApi = (app) => {
     }
   });
 
-  router.put('/:postId', async (req, res, next) => {
+  router.put('/:postId', secure('update'), async (req, res, next) => {
     const { postId: id } = req.params;
     const data = {
       title: req.body.title,
@@ -72,7 +74,7 @@ const postApi = (app) => {
     }
   });
 
-  router.delete('/:postId', async (req, res, next) => {
+  router.delete('/:postId', secure('delete'), async (req, res, next) => {
     const { postId: id } = req.params;
 
     try {
