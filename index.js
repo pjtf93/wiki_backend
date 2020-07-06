@@ -26,7 +26,7 @@ commentApi(app);
 app.get('/', (req, res) => res.send('Notes App esto sirve'));
 
 sequelize.sync().then(() => {
-  app.listen(process.env.PORT, () => {
-    console.log(`Example app listening on port ${process.env.PORT}!`);
+  app.listen(config.dbPort, () => {
+    console.log(`Example app listening on port ${config.dbPort}!`);
   });
 });

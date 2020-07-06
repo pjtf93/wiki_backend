@@ -16,6 +16,7 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "heroku-cli": "^7.0.9",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.5.7",
     "nanoid": "^3.1.10",
@@ -27,5 +28,8 @@
     "pg-hstore": "^2.3.3",
     "save": "^2.4.0",
     "sequelize": "^6.2.3"
+  },
+  "engines": {
+    "node": "10.x"
   }
 }
